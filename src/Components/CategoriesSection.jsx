@@ -8,7 +8,12 @@ export default function CategoriesSection() {
   const [categories, setCategories] = useState()
 
   useEffect(() => {
-    axios.get(`https://dummyjson.com/products/categories`).then(json => setCategories(json.data))
+    axios.get(`https://dummyjson.com/products/categories`).then(json => 
+    {
+      console.log(json.data)
+      setCategories(json.data)
+    }
+    )
 
   }, [])
 
@@ -22,10 +27,10 @@ export default function CategoriesSection() {
         {
           categories?.map((val,key) => 
           <div className="col-md-4 my-3" key={key}>
-           <Link className='text-decoration-none' to={`/products/category/${val}`}>
+           <Link className='text-decoration-none' to={`/products/category/${val.name}`}>
            <Card>
               <Card.Body>
-                <Card.Title>{key + 1} - {val.toUpperCase().replace('-',' ')}</Card.Title>
+                <Card.Title>{key + 1} - {val.name.toUpperCase().replace('-',' ')}</Card.Title>
               </Card.Body>
             </Card>
            </Link>

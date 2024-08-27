@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { json, useParams } from 'react-router-dom'
 import axios from 'axios'
 import ReactStars from 'react-stars'
 import Swal from 'sweetalert2'
@@ -59,7 +59,7 @@ export default function ProductPage()
     useEffect(() => {
       axios.get(`https://dummyjson.com/products/${productID}`).then(json => setProduct(json.data))
     }, [])
-
+console.log(json.data)
     return (
       <div className="container">
         <div className="text-center my-5">
